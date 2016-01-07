@@ -1,0 +1,20 @@
+.spiv {
+    display: inline-block;
+}
+
+.half {
+    width: 300px;
+}
+
+.left {
+    float: left;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.ccButton {
+    width: 300px;
+    margin-bottom: 10px;
+}

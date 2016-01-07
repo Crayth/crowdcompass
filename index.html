@@ -1,0 +1,47 @@
+<html ng-app="crowdCompassApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+<body ng-controller="crowdCompassController">
+    <div>
+        <button class="ccButton" ng-click="aggregateZipCodes()">Enter</button>
+    </div>
+
+    <spiv class="spiv half left">
+        <div>
+            <spiv>First Zipcode:</spiv>
+            <input type="text" ng-model="zips.first">
+        </div>
+        <spiv ng-if="results.first.error">
+            <div>{{results.first.error.description}}</div>
+        </spiv>
+        <spiv  ng-if="results.first.location">
+            <img ng-src="{{results.first.current_observation.icon_url}}">
+            <div><span class="bold">City:</span> {{results.first.location.city}}, {{results.second.location.state}}, {{results.second.location.country_name}}</div>
+            <div><span class="bold">Weather:</span> {{results.first.current_observation.weather}}</div>
+            <div><span class="bold">Temperature (Degrees Fahrenheit):</span> {{results.first.current_observation.temp_f}}</div>
+        </spiv>
+    </spiv>
+    <spiv class="spiv half">
+        <div>
+            <spiv>Second Zipcode:</spiv>
+            <input type="text" ng-model="zips.second">
+        </div>
+        <spiv ng-if="results.second.error">
+            <div>{{results.second.error.description}}</div>
+        </spiv>
+        <spiv ng-if="results.second.location">
+            <img ng-src="{{results.second.current_observation.icon_url}}">
+            <div><span class="bold">City:</span> {{results.second.location.city}}, {{results.second.location.state}}, {{results.second.location.country_name}}</div>
+            <div><span class="bold">Weather:</span> {{results.second.current_observation.weather}}</div>
+            <div><span class="bold">Temperature (Degrees Fahrenheit):</span> {{results.second.current_observation.temp_f}}</div>
+        </spiv>
+    </spiv>
+    <br><br><br>
+    <div ng-if="difference">Difference in Temperatures: {{difference}}</div>
+
+    <script src="crowdcompass.js"></script>
+    <link href="crowdcompass.css" type="text/css" rel="stylesheet" />
+</body>
+</html>
